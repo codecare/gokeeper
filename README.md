@@ -1,4 +1,4 @@
-gokeeper is a command line passwort vault written in go
+gokeeper is a command line password vault written in go
 
 sample output
   
