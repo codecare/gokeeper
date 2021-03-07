@@ -8,9 +8,14 @@ import (
 
 func EncryptToContainer(payload []byte) (passdata.CryptoContainer, error) {
 
+	return EncryptToContainerWithPassword(application.Key, payload)
+}
+
+func EncryptToContainerWithPassword(password []byte, payload []byte) (passdata.CryptoContainer, error) {
+
 	var result passdata.CryptoContainer
 
-	encrypted, err := encrypt(application.Key, payload)
+	encrypted, err := encrypt(password, payload)
 	if err != nil {return result, err}
 
 	result =  passdata.CryptoContainer{

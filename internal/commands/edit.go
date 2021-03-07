@@ -20,6 +20,8 @@ func ExecuteEditEntry(cmd []string) error {
 	if err != nil { return err }
 	newEntry.CryptedPassword = container
 
+	newEntry.Bucket =  readValue("bucket", newEntry.Bucket, extractCmd(cmd, 5))
+
 	return ExecuteSave()
 }
 

@@ -13,6 +13,7 @@ func printEntrySecure(index int, passEntry passdata.PassEntry) {
 	printValue("description:", passEntry.Description)
 	printValue("login:", passEntry.Login)
 	printValue("passwordAlg:", passEntry.CryptedPassword.Algorithm)
+	printValue("bucket:", passEntry.Bucket)
 }
 
 func ExecutePrintSecure(cmd []string) error {

@@ -13,6 +13,7 @@ type PassEntry struct {
 	RecoveryMail    string          `json:"recoveryMail"`
 	LastUsage       time.Time       `json:"lastUsage"`
 	CryptedPassword CryptoContainer `json:"cryptedPassword"`
+	Bucket	        string          `json:"bucket"`
 }
 
 type CryptoContainer struct {
@@ -69,6 +70,25 @@ func (passEntry PassEntry) MatchesFilter(s string) bool {
 	if strings.Contains(strings.ToLower(passEntry.Description), s) { return true }
 	if strings.Contains(strings.ToLower(passEntry.Login), s) { return true }
 	if strings.Contains(strings.ToLower(passEntry.RecoveryMail), s) { return true }
+	return false
+}
+
+func (passEntry PassEntry) Duplicate() PassEntry {
+	return PassEntry{
+		Name:            passEntry.Name,
+		Description:     passEntry.Description,
+		Login:           passEntry.Login,
+		RecoveryMail:    passEntry.RecoveryMail,
+		LastUsage:       passEntry.LastUsage,
+		CryptedPassword: passEntry.CryptedPassword,
+		Bucket:          passEntry.Bucket,
+	}
+}
+
+func (passEntry PassEntry) MatchesBucketPrefix(bucketPrefix string) bool {
+	bucketPrefix = strings.ToLower(bucketPrefix)
+	if strings.HasPrefix(strings.ToLower(passEntry.Bucket), bucketPrefix) { return true }
+
 	return false
 }
 

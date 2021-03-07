@@ -7,3 +7,8 @@ func ExecuteSelectPassword() error {
 	application.Key = []byte(p1)
 	return nil
 }
+
+func ExecuteSelectReturnPassword() ([]byte, error) {
+	p1 := readPassword()
+	return []byte(p1), nil
+}

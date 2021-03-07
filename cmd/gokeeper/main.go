@@ -92,4 +92,6 @@ func registerCommands() {
 	commands.RegisterWriteSelectedPassword()
 
 	commands.RegisterTestKeyboard()
+
+	commands.RegisterExportBucket()
 }

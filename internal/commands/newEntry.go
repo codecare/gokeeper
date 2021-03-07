@@ -19,6 +19,8 @@ func ExecuteNewEntry(cmd []string) error {
 	if err != nil { return err }
 	newEntry.CryptedPassword = container
 
+	newEntry.Bucket =  readValue("bucket", newEntry.Bucket, extractCmd(cmd, 5))
+
 	application.AllEntries = append(application.AllEntries, newEntry)
 
 	fmt.Printf("crated new entry: %s\n", newEntry.Name)

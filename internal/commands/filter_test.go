@@ -33,7 +33,7 @@ func factorisePassEntries() []PassEntry {
 
 	dateString := "2019-05-14T11:45:26.371Z"
 	timestamp, _ := time.Parse(time.RFC3339, dateString)
-	crypted1 := CryptoContainer{ Algorithm: "PBKDF2:4096:256:AES:GCM", AlgorithmMeta: "cafe", EncryptedText: "babe"}
+	crypted1 := CryptoContainer{ Algorithm: "PBKDF2:4096:256:AES:GCM", EncryptedText: "babe"}
 	passEntry1 := PassEntry{Name: "name", Description: "descr", Login: "us@codecare.de", LastUsage: timestamp, CryptedPassword: crypted1}
 	passEntry2 := PassEntry{Name: "other", Description: "descr", Login: "us@codecare.de", LastUsage: timestamp, CryptedPassword: crypted1}
 
