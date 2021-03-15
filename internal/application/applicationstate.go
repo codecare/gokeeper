@@ -22,8 +22,6 @@ var SelectedFile string
 
 var AllEntries []PassEntry
 
-var AllStates []DisplayState
-
 // pointer to the active entry in all entries
 var ActiveEntry *PassEntry
 

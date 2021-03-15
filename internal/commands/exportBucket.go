@@ -99,7 +99,7 @@ func executeSaveNewFileWithNewPassword(file string, entries []*passdata.PassEntr
 		container, err := crypt.EncryptToContainerWithPassword(password, passwordFromContainer)
 		if err != nil { return err }
 
-		var rekeyedEntry = entryToRekey.Duplicate()
+		rekeyedEntry := *entryToRekey
 		rekeyedEntry.CryptedPassword = container
 		rekeyedEntries = append(rekeyedEntries, rekeyedEntry)
 	}

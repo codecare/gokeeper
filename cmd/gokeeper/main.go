@@ -96,4 +96,5 @@ func registerCommands() {
 	commands.RegisterExportBucket()
 
 	commands.RegisterSetBucket()
+	commands.RegisterDelete()
 }

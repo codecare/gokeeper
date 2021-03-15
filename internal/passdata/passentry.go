@@ -73,18 +73,6 @@ func (passEntry PassEntry) MatchesFilter(s string) bool {
 	return false
 }
 
-func (passEntry PassEntry) Duplicate() PassEntry {
-	return PassEntry{
-		Name:            passEntry.Name,
-		Description:     passEntry.Description,
-		Login:           passEntry.Login,
-		RecoveryMail:    passEntry.RecoveryMail,
-		LastUsage:       passEntry.LastUsage,
-		CryptedPassword: passEntry.CryptedPassword,
-		Bucket:          passEntry.Bucket,
-	}
-}
-
 func (passEntry PassEntry) MatchesBucketPrefix(bucketPrefix string) bool {
 	bucketPrefix = strings.ToLower(bucketPrefix)
 	if strings.HasPrefix(strings.ToLower(passEntry.Bucket), bucketPrefix) { return true }
