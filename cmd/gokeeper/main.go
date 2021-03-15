@@ -94,4 +94,6 @@ func registerCommands() {
 	commands.RegisterTestKeyboard()
 
 	commands.RegisterExportBucket()
+
+	commands.RegisterSetBucket()
 }
