@@ -17,13 +17,13 @@ func printEntrySecure(index int, passEntry passdata.PassEntry) {
 }
 
 func ExecutePrintSecure(cmd []string) error {
-	printEntrySecure(application.ActiveIndex, *application.ActiveEntry)
+	printEntrySecure(application.CurrentActiveIndex.GetForDisplay(), *application.ActiveEntry)
 	fmt.Printf("\n")
 	return nil
 }
 
 func ExecutePrintInsecure(cmd []string) error {
-	printEntrySecure(application.ActiveIndex, *application.ActiveEntry)
+	printEntrySecure(application.CurrentActiveIndex.GetForDisplay(), *application.ActiveEntry)
 	bytes, err := crypt.DecryptFromContainer(application.ActiveEntry.CryptedPassword)
 	if err != nil { return err }
 	printValue("password:", string(bytes))

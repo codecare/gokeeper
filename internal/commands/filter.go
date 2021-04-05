@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/codecare/gokeeper/internal/application"
 	"fmt"
+	"github.com/codecare/gokeeper/internal/application"
 	"github.com/codecare/gokeeper/internal/passdata"
 	"reflect"
 	"strings"
@@ -25,10 +25,10 @@ func ExecuteFilter(cmd []string) error {
 }
 
 func applyFilter(filter string) {
-	application.ActiveIndex = -1
+	application.CurrentActiveIndex.Reset()
 	application.FilteredEntries = make([]*passdata.PassEntry, 0)
 
-	for index, _ := range application.AllEntries {
+	for index := range application.AllEntries {
 		if application.AllEntries[index].MatchesFilter(filter) {
 			application.FilteredEntries = append(application.FilteredEntries, &application.AllEntries[index])
 		}
@@ -40,7 +40,7 @@ func applyFilter(filter string) {
 
 func resetFilter() {
 	application.FilteredEntries = make([]*passdata.PassEntry, 0)
-	for index, _ := range application.AllEntries {
+	for index := range application.AllEntries {
 		application.FilteredEntries = append(application.FilteredEntries, &application.AllEntries[index])
 	}
 	preserveSelectedIndex()
@@ -49,15 +49,26 @@ func resetFilter() {
 
 func preserveSelectedIndex() {
 	// find index of active entry
-	application.ActiveIndex = -1
+	application.CurrentActiveIndex.Reset()
+	if application.ActiveEntry == nil {
+		return
+	}
+
 	for pos, passEntry := range application.FilteredEntries {
 
-		if application.ActiveEntry != nil && reflect.DeepEqual(application.ActiveEntry, passEntry) {
-			application.ActiveIndex = pos
+		if reflect.DeepEqual(application.ActiveEntry, passEntry) {
+			application.CurrentActiveIndex.Filter = pos
 		}
 	}
-	if application.ActiveIndex == -1 {
+	if application.CurrentActiveIndex.Filter == -1 {
 		application.ActiveEntry = nil
+	} else {
+		for pos, passEntry := range application.AllEntries {
+
+			if reflect.DeepEqual(application.ActiveEntry, &passEntry) {
+				application.CurrentActiveIndex.Global = pos
+			}
+		}
 	}
 }
 

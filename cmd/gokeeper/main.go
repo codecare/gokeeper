@@ -11,6 +11,8 @@ import (
 
 func main() {
 
+	fmt.Printf("Built on %s from git %s\n", buildTime, gitRev)
+
 	registerCommands()
 
 	gameLoop()
@@ -101,3 +103,8 @@ func registerCommands() {
 	commands.RegisterBucketFilter()
 	commands.RegisterPrintBuckets()
 }
+
+var (
+	gitRev = "undef"
+	buildTime = "undef"
+)

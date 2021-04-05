@@ -24,7 +24,7 @@ func ExecuteFilterBucket(cmd []string) error {
 }
 
 func applyBucketFilter(filter string) {
-	application.ActiveIndex = -1
+
 	application.FilteredEntries = make([]*passdata.PassEntry, 0)
 
 	for index, _ := range application.AllEntries {
@@ -40,6 +40,7 @@ func applyBucketFilter(filter string) {
 	}
 	application.NumberOfEntriesToSelect = len(application.FilteredEntries)
 	fmt.Printf("filtered entries for '%s': %d \n", filter, len(application.FilteredEntries))
+
 	preserveSelectedIndex()
 }
 

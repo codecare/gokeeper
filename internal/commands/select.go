@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"github.com/codecare/gokeeper/internal/application"
 	"errors"
+	"github.com/codecare/gokeeper/internal/application"
 	"github.com/codecare/gokeeper/internal/passdata"
 	"reflect"
 	"strconv"
@@ -13,8 +13,11 @@ func ExecuteSelect(cmd []string) error {
 	if s, err := strconv.Atoi(cmd[0]); err == nil && s < application.NumberOfEntriesToSelect {
 		// select the one from the complete list!
 		internalErr := selectEntry(application.FilteredEntries[s])
+
 		if internalErr != nil { return internalErr }
-		application.ActiveIndex = s
+
+		preserveSelectedIndex()
+
 		return ExecutePrintSecure(cmd)
 	} else {
 		return err
@@ -27,10 +30,10 @@ func selectEntry(selectedEntry *passdata.PassEntry) error {
 	for pos, passEntry := range application.AllEntries {
 
 		if reflect.DeepEqual(*selectedEntry, passEntry) {
-			application.ActiveEntry = &passEntry
 			foundAtPos = pos
 		}
 	}
+
 	if foundAtPos == -1 {
 		return errors.New("could not select")
 	} else {

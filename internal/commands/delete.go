@@ -18,11 +18,11 @@ func DeleteEntry(cmd []string) error {
 		return errors.New("name does not match")
 	}
 
-	if application.AllEntries[application.ActiveIndex].Name != application.ActiveEntry.Name {
-		return errors.New("index mismatch!")
+	if application.AllEntries[application.CurrentActiveIndex.Global].Name != application.ActiveEntry.Name {
+		return errors.New(fmt.Sprintf("index mismatch! %d %s!=%s", application.CurrentActiveIndex.Global, application.AllEntries[application.CurrentActiveIndex.Global].Name, application.ActiveEntry.Name ))
 	}
 
-	application.AllEntries = remove(application.AllEntries, application.ActiveIndex)
+	application.AllEntries = remove(application.AllEntries, application.CurrentActiveIndex.Global)
 	application.ActiveEntry = nil
 	resetFilter()
 	return nil

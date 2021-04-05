@@ -11,9 +11,18 @@ const (
 	NotLoaded LoadingState = "NotLoaded"
 )
 
-type DisplayState struct {
-	DisplayIndex int
-	hidden bool
+type ActiveIndex struct {
+	Global int
+	Filter int
+}
+
+func (activeIndex ActiveIndex) GetForDisplay() int {
+	return activeIndex.Filter
+}
+
+func (activeIndex ActiveIndex) Reset() {
+	activeIndex.Global = -1
+	activeIndex.Filter = -1
 }
 
 var CurrentLoadingState = NotLoaded
@@ -27,7 +36,7 @@ var ActiveEntry *PassEntry
 
 var FilteredEntries []*PassEntry
 
-var ActiveIndex int
+var CurrentActiveIndex = ActiveIndex{-1, -1}
 
 var Key []byte
 
