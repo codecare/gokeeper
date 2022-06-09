@@ -55,7 +55,7 @@ func RegisterGeneratePassword() {
 	application.RegisterCommand(
 		application.CommandDescription{
 			Name:              "Generate",
-			Description:       "Generate New Password",
+			Description:       "Generate New Password - use 'g 20' for 20 chars - use 'g 20 sh' for shell friendly 20 chars",
 			ShortcutHint:      "g",
 			Executable:        ExecuteGeneratePassword,
 			IsApplicable:      application.AlwaysApplicable,
