@@ -6,7 +6,7 @@ import (
 )
 
 const AllowedCharsAll = "_!#$%&*+,-.0123456789:;<=>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-const AllowedCharsShellFriendly = "_%,-.0123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+const AllowedCharsShellFriendly = "_%+-.0123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 func GeneratePassword(length int, allowedChars string) ([]byte, error) {
 
