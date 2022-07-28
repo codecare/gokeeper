@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/codecare/gokeeper/internal/application"
 	"github.com/codecare/gokeeper/internal/commands"
-	"fmt"
-	"os"
 	. "github.com/codecare/gokeeper/internal/shell"
+	"os"
 	"strings"
 )
 
@@ -22,11 +22,13 @@ func main() {
 func gameLoop() {
 
 	err := commands.ExecuteHelp(nil)
-	if err != nil { panic(err) }
+	if err != nil {
+		panic(err)
+	}
 
 	if len(os.Args) > 1 {
 		// we got more than just the executable
-		fmt.Printf("command line args: %v\n", os.Args[1:] )
+		fmt.Printf("command line args: %v\n", os.Args[1:])
 		executeCommand(os.Args[1:])
 	}
 
@@ -102,9 +104,11 @@ func registerCommands() {
 
 	commands.RegisterBucketFilter()
 	commands.RegisterPrintBuckets()
+
+	commands.RegisterClearScreen()
 }
 
 var (
-	gitRev = "undef"
+	gitRev    = "undef"
 	buildTime = "undef"
 )
