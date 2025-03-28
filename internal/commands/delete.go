@@ -19,27 +19,26 @@ func DeleteEntry(cmd []string) error {
 	}
 
 	if application.AllEntries[application.CurrentActiveIndex.Global].Name != application.ActiveEntry.Name {
-		return errors.New(fmt.Sprintf("index mismatch! %d %s!=%s", application.CurrentActiveIndex.Global, application.AllEntries[application.CurrentActiveIndex.Global].Name, application.ActiveEntry.Name ))
+		return errors.New(fmt.Sprintf("index mismatch! %d %s!=%s", application.CurrentActiveIndex.Global, application.AllEntries[application.CurrentActiveIndex.Global].Name, application.ActiveEntry.Name))
 	}
 
 	application.AllEntries = remove(application.AllEntries, application.CurrentActiveIndex.Global)
 	application.ActiveEntry = nil
 	resetFilter()
-	return nil
+	return ExecuteSave()
 }
 
 func remove(slice []passdata.PassEntry, s int) []passdata.PassEntry {
-    return append(slice[:s], slice[s+1:]...)
+	return append(slice[:s], slice[s+1:]...)
 }
 
-
-func RegisterDelete()() {
+func RegisterDelete() {
 	application.RegisterCommand(
 		application.CommandDescription{
-			Name:         "Delete Active Entry",
-			Description:  "Deletes the active entry",
-			ShortcutHint:     "del",
-			Executable:   DeleteEntry,
-			IsApplicable: application.OnlyOnActiveEntryExists,
+			Name:              "Delete Active Entry",
+			Description:       "Deletes the active entry",
+			ShortcutHint:      "del",
+			Executable:        DeleteEntry,
+			IsApplicable:      application.OnlyOnActiveEntryExists,
 			CanHandleShortCut: application.CanHandleShortCutClosure("del")})
 }
