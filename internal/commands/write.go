@@ -12,7 +12,7 @@ func ExecuteWriteLasteGeneratedPassword(cmd  []string) error {
 	return err
 }
 
-func RegisterWriteLasteGeneratedPassword()() {
+func RegisterWriteLastGeneratedPassword()() {
 	application.RegisterCommand(
 		application.CommandDescription{
 			Name:         "Writes last generated password",

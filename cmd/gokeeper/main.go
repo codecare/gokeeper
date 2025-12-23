@@ -85,7 +85,7 @@ func registerCommands() {
 
 	commands.RegisterGeneratePassword()
 	commands.RegisterGeneratePasswordWrite()
-	commands.RegisterWriteLasteGeneratedPassword()
+	commands.RegisterWriteLastGeneratedPassword()
 
 	commands.RegisterSelect()
 	commands.RegisterPrintSecure()
@@ -106,6 +106,7 @@ func registerCommands() {
 	commands.RegisterPrintBuckets()
 
 	commands.RegisterClearScreen()
+	commands.RegisterCopyToClipboard()
 }
 
 var (
