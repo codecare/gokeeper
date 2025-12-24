@@ -14,7 +14,7 @@ func ExecuteCopyToClipboard(cmd []string) error {
 	}
 
 	var activeEntry = application.ActiveEntry
-	fmt.Println("copying to clipboard: " + activeEntry.Name)
+	fmt.Println("Copied password to clipboard: " + activeEntry.Name)
 	bytes, err := crypt.DecryptFromContainer(activeEntry.CryptedPassword)
 	if err != nil { return err }
 	clipboard.Write(clipboard.FmtText, bytes)
