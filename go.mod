@@ -1,6 +1,6 @@
 module github.com/codecare/gokeeper
 
-go 1.24.6
+go 1.25.5
 
 require (
 	github.com/micmonay/keybd_event v1.1.2
