@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strings"
+
 	"github.com/codecare/gokeeper/internal/application"
 	"github.com/codecare/gokeeper/internal/commands"
 	. "github.com/codecare/gokeeper/internal/shell"
-	"os"
-	"strings"
 )
 
 func main() {
@@ -85,7 +86,7 @@ func registerCommands() {
 
 	commands.RegisterGeneratePassword()
 	commands.RegisterGeneratePasswordWrite()
-	commands.RegisterWriteLasteGeneratedPassword()
+	commands.RegisterWriteLastGeneratedPassword()
 
 	commands.RegisterSelect()
 	commands.RegisterPrintSecure()
@@ -106,6 +107,9 @@ func registerCommands() {
 	commands.RegisterPrintBuckets()
 
 	commands.RegisterClearScreen()
+	commands.RegisterCopySelectedPasswordToClipboard()
+	commands.RegisterCopySelectedLoginToClipboard()
+	commands.RegisterCopyLastGeneratedPasswordToClipboard()
 }
 
 var (

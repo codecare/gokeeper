@@ -20,9 +20,9 @@ use at your own risk
 Apache v2 License
 
 
-you can install it with go get -v github.com/codecare/gokeeper/cmd/gokeeper
+you can install it with `go get -v github.com/codecare/gokeeper/cmd/gokeeper`
 
-this will install an executable in your default path for go executables $GOPATH/bin (default GOPATH=$HOME/go)
+this will install an executable in your default path for go executables `$GOPATH/bin` (default `GOPATH=$HOME/go`)
 
 you need a c toolchain for the keyboard bindings
 
