@@ -7,14 +7,13 @@ import (
 
 func TestGeneratePassword(t *testing.T) {
 
-	for i:=0; i < 100; i++ {
-		bytes, err := GeneratePassword(16)
+	for i := 0; i < 100; i++ {
+		bytes, err := GeneratePassword(16, "abcd")
 		if err != nil {
-			t.Errorf("save() error = %v", err);
+			t.Errorf("save() error = %v", err)
 			return
 		}
 
 		fmt.Printf("pass: %s\n", string(bytes))
 	}
 }
-
